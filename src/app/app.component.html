@@ -2,5 +2,8 @@
 <p>
   Start editing to see some magic happen :)
 </p>
+<h1>{{message}}</h1>
 <app-employee-list></app-employee-list>
 <app-employee-details></app-employee-details>
+<app-child (childEvent)="message=$event" [parentData]="parentData"></app-child>
+<app-pipe></app-pipe>
