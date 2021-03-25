@@ -1,8 +1,10 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { IEmployee } from "./employee";
-// import { Observable } from 'rxjs/Observable';
 import { Observable } from "rxjs";
+// import 'rxjs/add/operator/catch';
+// import 'rxjs/add/obervable/throw';
+// import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class EmployeeService {
   constructor(private http: HttpClient) {}
@@ -15,10 +17,14 @@ export class EmployeeService {
     ];
   }
 
-  // getEmployees():Observable<IEmployee[]> {
-  // return this.http.get<IEmployee[]>(this._url);
-  // }
   getEmployeesByHttp(): Observable<IEmployee[]> {
-    return this.http.get<IEmployee[]>(this._url);
+    return this.http.get<IEmployee[]>(this._url)
+    //.catch(this.errorHandler);
   }
+  // errorHandler(errorHandler: any): Observable<IEmployee[]> {
+  //   throw new Error("Method not implemented.");
+  // }
+  // errorHandler(error: HttpErrorResponse) {
+  //   return throw(error.message || "server error");
+  // }
 }
